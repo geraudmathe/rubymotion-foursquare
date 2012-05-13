@@ -1,0 +1,3 @@
+class RatePlaceViewController < UIViewController
+  
+end
