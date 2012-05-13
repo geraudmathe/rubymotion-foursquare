@@ -23,8 +23,8 @@ class Foursquare
 
   def fetch_url
     string_url  = "https://api.foursquare.com/v2/venues/search"
-    string_url += "?client_id=AEZJNBUTTGBL0RENEGRLL5K2LKO4MAPHUPEWWP5TP522R5CB"
-    string_url += "&client_secret=3QN2Q2GV3QWHVYZ0HRQGGPVKT1EBI1RKX1PZ5LIIF1R4YDBQ"
+    string_url += "?client_id=#{@token_id}"
+    string_url += "&client_secret=#{@token_secret}"
     string_url += "&ll=48.861101,2.351074"
     string_url += "&locale=fr"
     string_url += "&v=20120510"

@@ -12,4 +12,8 @@ class AppDelegate
     @window.makeKeyAndVisible
     true
   end
+
+  def foursquare_handler
+    @foursquare ||= Foursquare.new("AEZJNBUTTGBL0RENEGRLL5K2LKO4MAPHUPEWWP5TP522R5CB","3QN2Q2GV3QWHVYZ0HRQGGPVKT1EBI1RKX1PZ5LIIF1R4YDBQ")
+  end
 end

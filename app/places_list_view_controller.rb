@@ -6,7 +6,8 @@ class PlacesListViewControllerOne < UITableViewController
 
 
   def viewDidLoad
-    @places ||= fetch_nearby_places
+    puts UIApplication.sharedApplication.delegate.foursquare_handler
+    @places ||= UIApplication.sharedApplication.delegate.foursquare_handler.fetch_nearby_places
     view.dataSource = view.delegate = self
   end
 
@@ -32,30 +33,4 @@ class PlacesListViewControllerOne < UITableViewController
     return cell
   end
 
-  def fetch_nearby_places
-
-    url = NSURL.alloc.initWithString(generate_fetch_url)
-    request =  NSURLRequest.alloc.initWithURL(url)
-    #TODO : implement queued request
-    #queue = NSOperationQueue.alloc.init
-    #queue.setName "com.foursquare-rubymotion.pingQueue"
-
-    error = Pointer.new(:object)
-    response = Pointer.new(:object)
-    connection  = NSURLConnection.sendSynchronousRequest(request,returningResponse: response, error:error )
-    serialization  = NSJSONSerialization.JSONObjectWithData(connection, options:0 , error:error)
-    serialization.first[1]["venues"]
-  end
-
-  def generate_fetch_url
-    client_id = ""
-    client_secret = ""
-    url_string  = "https://api.foursquare.com/v2/venues/search?"
-    url_string += "client_id=#{client_id}"
-    url_string += "&client_secret=#{client_secret}"
-    url_string += "&ll=48.861101,2.351074"
-    url_string += "&locale=fr"
-    url_string += "&v=20120510"
-    url_string
-  end
 end
