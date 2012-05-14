@@ -12,5 +12,6 @@ and paste it in the app (in Foursquare object creation in app_delegate.rb)
 * implement checkin functionnalities
 * Make asynchronous requests
 * move foursquare credentials in config file
+* implement error handler for requests
 * create detail view about a place
 * and a lot of good stuff...

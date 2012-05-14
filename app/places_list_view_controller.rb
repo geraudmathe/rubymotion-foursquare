@@ -1,13 +1,12 @@
 class PlacesListViewControllerOne < UITableViewController
   def init
     self.tabBarItem = UITabBarItem.alloc.initWithTitle("list",image:UIImage.imageNamed("list.png"),tag:0)
+    @places ||= UIApplication.sharedApplication.delegate.foursquare_handler.fetch_nearby_places
     self
   end
 
 
   def viewDidLoad
-    puts UIApplication.sharedApplication.delegate.foursquare_handler
-    @places ||= UIApplication.sharedApplication.delegate.foursquare_handler.fetch_nearby_places
     view.dataSource = view.delegate = self
   end
 
