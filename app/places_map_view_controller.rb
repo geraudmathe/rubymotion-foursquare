@@ -10,19 +10,19 @@ class PlacesMapViewController < UIViewController
   def viewDidLoad
     #self.view = MKMapView.alloc.initWithTitle
     #self.delegate = self
-    mapView = MKMapView.alloc.initWithFrame(self.view.bounds)
+    mapView =   MKMapView.alloc.initWithFrame(self.view.bounds)
     mapView.mapType = MKMapTypeHybrid;
     self.view = mapView
     @places.each do |pl|
-        coordinate = CLLocationCoordinate2D.new(pl["location"]["lat"],pl["location"]["lng"])
+        pl_obj = Place.new pl
         #annotation = MKPointAnnotation.alloc.coordinate = coordinate
-        #self.view.addAnnotation(coordinate)
+        mapView.addAnnotation(pl_obj)
     end
   end
 
   def viewWillAppear(animated)
     location = CLLocationCoordinate2D.new(@position.latitude,@position.longitude)
-    region = MKCoordinateRegionMake(location, MKCoordinateSpanMake(3.1, 3.1))
+    region = MKCoordinateRegionMake(location, MKCoordinateSpanMake(0.001, 0.001))
     self.view.setRegion(region)     
   end
 
