@@ -23,6 +23,10 @@ class AppDelegate
       lm.startUpdatingLocation
       lm.delegate = self
     end
-    @location_manager.location.coordinate
+    if not Device.simulator?
+      @location_manager.location.coordinate
+    else 
+      SimulatePosition.new
+    end
   end
 end
